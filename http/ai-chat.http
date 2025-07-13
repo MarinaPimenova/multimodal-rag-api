@@ -1,0 +1,67 @@
+GET http://localhost:8081/version
+
+###
+GET http://localhost:8081/actuator/metrics
+
+###
+### Send a form with the text and file fields
+POST http://localhost:8081/api/upload
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="file"; filename="microservices-on-aws.pdf"
+Content-Type: application/pdf
+
+< ./microservices-on-aws.pdf
+--WebAppBoundary--
+
+### [
+#  {
+#    "id": "4753c565-cfee-45de-a784-d2ab8c56d635",
+#    "text": "Implementing Microservices  on AWS                                                                                     AWS  Whitepaper                                                                       \n         Deploying           Lambda-based                 applications                                                                                                                                                \n\n         You  can   deploy    your   Lambda      code   by  uploading     a  zip   ﬁle  archive   or  by  creating    and   uploading                                                                                 \n         a container    image     through    the   console    UI using    a valid  Amazon      ECR   image    URI.   However,     when                                                                                \n         a Lambda      function    becomes      complex,     meaning     it has  layers,   dependencies,       and   permissions,                                                                                     \n         uploading     through     the  UI  can  become      unwieldy     for  code   changes.                                                                                                                        \n\n         Using AWS      CloudFormation         and the    AWS    Serverless     Application     Model    (AWS    SAM),    AWS                                                                                         \n         Cloud   Development        Kit  (AWS    CDK),   or  Terraform     streamlines      the  process    of deﬁning     serverless                                                                                 \n         applications.    AWS     SAM,   natively    supported      by  CloudFormation,        oﬀers    a simpliﬁed     syntax    for                                                                                 \n         specifying    serverless    resources. AWS        Lambda     Layers help     manage      shared    libraries   across   multiple                                                                             \n         Lambda     functions,     minimizing     function     footprint,   centralizing     tenant-aware       libraries,   and                                                                                      \n         improving     the  developer      experience.     Lambda      SnapStart     for  Java  enhances      startup    performance       for                                                                        \n         latency-sensitive      applications.                                                                                                                                                                         \n\n         To  deploy,   specify    resources    and   permissions      policies   in a CloudFormation         template,     package                                                                                    \n         deployment       artifacts,  and   deploy    the   template.     SAM    Local,  an  AWS    CLI  tool,  allows    local                                                                                       \n         development,       testing,   and   analysis   of  serverless    applications     before    uploading      to Lambda.                                                                                        \n\n         Integration    with   tools   like AWS    Cloud9     IDE,  AWS    CodeBuild,     AWS     CodeDeploy,      and   AWS                                                                                          \n         CodePipeline      streamlines      authoring,    testing,   debugging,       and  deploying      SAM-based       applications.                                                                               \n\n         The  following     diagram     shows    deploying     AWS     Serverless    Application     Model     resources    using                                                                                     \n         CloudFormation        and   AWS    CI/CD    tools.                                                                                                                                                           \n\n         Deploying  Lambda-based  applications                                                                                                8",
+#    "media": null,
+#    "metadata": {
+#      "distance": 0.13639057,
+#      "file_name": "microservices-on-aws.pdf",
+#      "page_number": 12
+#    },
+#    "score": 0.8636094331741333
+#  },
+#  {
+#    "id": "c956eafb-3099-4ea8-a596-2dc5263632d0",
+#    "text": "Implementing Microservices  on AWS                                                                                     AWS  Whitepaper                                                                       \n\n         Transfer   (REST)    or  RESTful    APIs,   or GraphQL      APIs.   Static  web    content    can  be   served   using   Amazon                                                                              \n         Simple    Storage    Service    (Amazon     S3)   and  Amazon      CloudFront.                                                                                                                               \n\n         Microservices                                                                                                                                                                                                \n\n         APIs  are  considered      the  front   door  of  microservices,      as they   are  the   entry   point   for application     logic.                                                                        \n         Typically,   RESTful    web    services   API  or  GraphQL      APIs   are  used.   These   APIs   manage      and   process                                                                                 \n         client  calls, handling     functions     such   as traﬃc    management,         request    ﬁltering,   routing,    caching,                                                                                 \n         authentication,      and   authorization.                                                                                                                                                                    \n\n         Microservices             implementations                                                                                                                                                                    \n\n         AWS    oﬀers   building    blocks    to develop     microservices,      including    Amazon      ECS   and   Amazon      EKS   as                                                                            \n         the  choices   for  container     orchestration      engines    and   AWS    Fargate    and   EC2   as  hosting    options.   AWS                                                                            \n         Lambda     is another     serverless    way   to  build  microservices      on   AWS.   Choice    between      these   hosting                                                                               \n         options    depends     on  the  customer’s      requirements       to manage      the  underlying      infrastructure.                                                                                       \n\n         AWS    Lambda     allows    you  to  upload    your   code,   automatically       scaling   and   managing      its execution                                                                                \n         with  high   availability.   This   eliminates    the   need   for  infrastructure     management,         so  you  can   move                                                                               \n         quickly   and   focus   on  your   business    logic.  Lambda      supports     multiple    programming        languages      and                                                                            \n         can  be  triggered    by   other   AWS    services   or  called   directly   from   web   or  mobile    applications.                                                                                        \n\n         Container-based        applications     have   gained    popularity     due   to  portability,   productivity,     and                                                                                       \n         eﬃciency. AWS        oﬀers   several    services   to  build,  deploy    and   manage      containers.                                                                                                       \n\n         •  App2Container,        a command       line  tool  for  migrating     and   modernizing       Java   and   .NET   web                                                                                      \n            applications     into  container     format.   AWS     A2C   analyzes    and   builds   an  inventory     of  applications                                                                                \n            running    in bare   metal,   virtual   machines,     Amazon      Elastic   Compute      Cloud    (EC2)   instances,    or in  the                                                                        \n            cloud.                                                                                                                                                                                                    \n\n         •  Amazon     Elastic   Container     Service   (Amazon      ECS)   and   Amazon      Elastic  Kubernetes       Service                                                                                      \n            (Amazon     EKS) manage        your   container    infrastructure,      making    it easier   to  launch   and   maintain                                                                                 \n            containerized      applications.                                                                                                                                                                          \n\n            •  Amazon     EKS   is a  managed      Kubernetes      service   to  run   Kubernetes      in the  AWS    cloud    and   on-                                                                              \n               premises    data   centers    (Amazon      EKS   Anywhere).      This  extends    cloud    services   into  on-premises",
+#    "media": null,
+#    "metadata": {
+#      "distance": 0.19067185,
+#      "file_name": "microservices-on-aws.pdf",
+#      "page_number": 9
+#    },
+### What ways can be used to deploy Lambda into AWS cloud?
+GET http://localhost:8081/api/docs?query="What ways can be used to deploy Lambda into AWS cloud?"
+#
+###
+### {
+#  "sessionId": "09d4947d-2f88-4239-a9e9-2c0345e71b85",
+#  "content": "You can deploy AWS Lambda functions into the AWS cloud using several methods:\n
+#              1. Uploading your Lambda code as a zip file archive directly through the AWS Management Console UI.\n\n
+#               2. Creating and uploading a container image to Lambda via a valid Amazon Elastic Container Registry (ECR) image URI.\n\n3. Using infrastructure-as-code tools such as AWS CloudFormation and the AWS Serverless Application Model (AWS SAM), which provide simplified syntax for defining serverless resources and streamline deployment.\n\n4. Employing AWS Cloud Development Kit (AWS CDK) or Terraform to define and deploy Lambda functions programmatically.\n\n5. Utilizing AWS SAM Local, an AWS CLI tool, for local development, testing, and analysis before deploying to Lambda.\n\n6. Integrating with AWS developer tools like AWS Cloud9 IDE, AWS CodeBuild, AWS CodeDeploy, and AWS CodePipeline to automate authoring, testing, debugging, and deploying Lambda-based applications.\n\nThese methods help manage complex Lambda functions with layers, dependencies, and permissions more efficiently than manual uploads through the console UI."
+#}
+POST http://localhost:8081/api/1/assistant
+Content-Type: application/json
+
+{
+  "question": "What ways can be used to deploy Lambda into AWS cloud?"
+}
+###
+### {
+#  "sessionId": "09d4947d-2f88-4239-a9e9-2c0345e71b85",
+#  "content": "You can deploy AWS Lambda using zip file uploads, container images via ECR,
+# infrastructure-as-code tools like CloudFormation, AWS SAM, AWS CDK, Terraform, and AWS developer tools for automation."
+#}
+POST http://localhost:8081/api/09d4947d-2f88-4239-a9e9-2c0345e71b85/assistant
+Content-Type: application/json
+
+{
+  "question": "Please provide very short answer based on the previous result."
+}
+###

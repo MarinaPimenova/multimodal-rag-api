@@ -3,6 +3,7 @@ target/
 .mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
+src/main/resources/application-local.yml
 
 ### IntelliJ IDEA ###
 .idea
@@ -14,3 +15,4 @@ http/microservices-on-aws.pdf
 docker-config/config/.env
 docker-config/db/**
 docker-config/pgvector-db/**
+

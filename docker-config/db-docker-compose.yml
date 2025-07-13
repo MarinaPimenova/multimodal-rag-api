@@ -1,0 +1,23 @@
+
+services:
+  postgresml-service:
+    image: ghcr.io/postgresml/postgresml:2.10.0
+    container_name: postgresml-service
+    environment:
+      POSTGRES_DB: postgresml
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      PGDATA: "/var/lib/postgresql/data/pgdata"
+    ports:
+      - "5432:5432"
+      - 8080:8080
+    volumes:
+      - ./db:/var/lib/postgresql/data
+      - ./scripts/entrypoint.sh:/app/entrypoint.sh
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "${POSTGRES_USER}"]
+      interval: 10s
+      timeout: 5s
+      retries: 2
+      start_period: 10s
+    restart: unless-stopped
