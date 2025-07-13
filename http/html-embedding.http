@@ -1,0 +1,24 @@
+### https://investors.epam.com/news/news-details/2025/EPAM-Reports-Results-for-Fourth-Quarter-and-Full-Year-2024/default.aspx
+### https://www.microsoft.com/investor/reports/ar24/index.html
+### 2 diagrams
+### The diagram referenced (Figure 16 in the AWS whitepaper) presents a streamlined, scalable pipeline for log analysis on AWS, highlighting several key insights:
+#
+#1. **Real-Time Log Exploration with CloudWatch Logs Insights**: Users can perform immediate exploration, analysis, and visualization of log data directly within Amazon CloudWatch, enabling quick operational insights.
+#
+#2. **Advanced Search and Visualization via Amazon OpenSearch Service**: For deeper log file analysis, CloudWatch Logs can stream data in real time to Amazon OpenSearch Service, which includes Kibana. Kibana offers an intuitive search interface and rich visualization capabilities, enhancing log data exploration.
+#
+#3. **Data Streaming through Amazon Data Firehose**: CloudWatch Logs can also stream log entries to Amazon Data Firehose, which reliably delivers streaming data to destinations such as Amazon Redshift for further processing.
+#
+#4. **Comprehensive Analytics and Reporting with Redshift and QuickSight**: Logs stored in Amazon Redshift can be accessed by Amazon QuickSight, a scalable business intelligence service that simplifies data access and enables comprehensive analysis, reporting, and visualization. QuickSight connects easily to multiple AWS data sources beyond Redshift, including RDS, Aurora, EMR, DynamoDB, S3, and Kinesis.
+#
+#5. **Flexible and Scalable Log Analysis Pipeline**: The overall architecture supports a flexible workflow where users can start with real-time insights in CloudWatch, proceed to detailed search and visualization in OpenSearch/Kibana, and then perform deeper analytics and business intelligence reporting using Redshift and QuickSight.
+#
+#**Overall Insight**: AWS provides an integrated ecosystem for ingesting, analyzing, searching, visualizing, and reporting on log data. This pipeline supports real-time operational monitoring as well as advanced analytics and business intelligence, enabling organizations to efficiently derive actionable insights from their logs at scale.
+POST http://localhost:8081/api/load-url
+Content-Type: application/json
+
+{
+  "url": "https://www.microsoft.com/investor/reports/ar24/index.html"
+}
+###
+###

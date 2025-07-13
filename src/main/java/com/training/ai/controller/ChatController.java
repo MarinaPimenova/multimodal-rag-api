@@ -36,6 +36,12 @@ public class ChatController {
         return ResponseEntity.ok(dataLoaderService.uploadKnowledge(file));
     }
 
+    @PostMapping("/load-url")
+    public ResponseEntity<String> loadUrl(@RequestBody Map<String, String> request) {
+        String url = request.get("url");
+        return ResponseEntity.ok(dataLoaderService.loadFromUrl(url));
+    }
+
     @GetMapping("/docs")
     ResponseEntity<List<Document>> query(@RequestParam String query) {
 

@@ -58,10 +58,19 @@ Content-Type: application/json
 #  "content": "You can deploy AWS Lambda using zip file uploads, container images via ECR,
 # infrastructure-as-code tools like CloudFormation, AWS SAM, AWS CDK, Terraform, and AWS developer tools for automation."
 #}
-POST http://localhost:8081/api/09d4947d-2f88-4239-a9e9-2c0345e71b85/assistant
+POST http://localhost:8081/api/af7d5a9c-5ec9-461d-9958-787e90d55e60/assistant
 Content-Type: application/json
 
 {
   "question": "Please provide very short answer based on the previous result."
 }
+###
+### Segment revenue and operating income were as follows during the periods presented:
+GET http://localhost:8081/api/1/assistant
+Content-Type: application/json
+
+{
+  "question": "What was Microsoft's revenue in Q4 2024?"
+}
+
 ###

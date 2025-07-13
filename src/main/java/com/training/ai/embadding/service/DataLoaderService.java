@@ -1,5 +1,6 @@
 package com.training.ai.embadding.service;
 
+import com.training.ai.embadding.web.WebPageReaderService;
 import com.training.ai.exception.StorageException;
 import com.training.ai.exception.UnsupportedFileType;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +20,7 @@ import java.nio.file.StandardCopyOption;
 @RequiredArgsConstructor
 public class DataLoaderService {
     private final PdfFileReaderService pdfFileReaderService;
+    private final WebPageReaderService webPageReaderService;
 
     // Upload new knowledge context
     public String uploadKnowledge(MultipartFile multipartFile) {
@@ -33,6 +35,12 @@ public class DataLoaderService {
         pdfFileReaderService.addResource(resource);
 
         return multipartFile.getOriginalFilename();
+    }
+
+    public String loadFromUrl(String url) {
+        Assert.hasText(url, "URL must not be empty");
+        webPageReaderService.addWebPageContent(url);
+        return "Web content ingested from: " + url;
     }
 
     public File store(MultipartFile file) {
