@@ -8,7 +8,7 @@ import org.springframework.ai.model.SimpleApiKey;
 import org.springframework.ai.openai.OpenAiChatModel;
 import org.springframework.ai.openai.OpenAiChatOptions;
 import org.springframework.ai.openai.api.OpenAiApi;
-import org.springframework.beans.factory.annotation.Value;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpHeaders;
@@ -60,30 +60,8 @@ public class OpenAiApiConfig {
         return ChatClient.builder(chatModel).build();
     }
 
-
     @Bean
-    public ChatModel chatImageModel(OpenAiApi openAiApi,
-                                    @Value("${openai.image-model}") String imageModel) {
-        OpenAiChatOptions openAiChatOptions = OpenAiChatOptions.builder()
-                .model(imageModel)
-                .streamUsage(false)
-                .temperature(0.2)
-                .maxTokens(1000)
-                .build();
-        return OpenAiChatModel.builder()
-                .defaultOptions(openAiChatOptions)
-                .openAiApi(openAiApi)
-                .build();
-    }
-
-    @Bean
-    public ChatClient chatImageClient(ChatModel chatImageModel) {
-        return ChatClient.builder(chatImageModel).build();
-    }
-
-    @Bean
-    public ChatModel chatTableModel(OpenAiApi openAiApi,
-                                    @Value("${openai.image-model}") String imageModel) {
+    public ChatModel chatTableModel(OpenAiApi openAiApi) {
 
         OpenAiChatOptions openAiChatOptions = OpenAiChatOptions.builder()
                 .model("gpt-4")

@@ -3,7 +3,7 @@ services:
   rag-ui-service:
     container_name: "rag-ui-service"
     #image: rag-ui-local:latest
-    image: mnpma/rag-ui:1.0
+    image: mnpma/multimodal-rag-ui:1.0
     ports:
       - "7000:80"
 
@@ -23,13 +23,17 @@ services:
   rag-api-service:
     container_name: "rag-api-service"
     #image: rag-api-local:latest
-    image: mnpma/rag-api:1.0
+    image: mnpma/multimodal-rag-api:1.0
     environment:
       OPEN_AI_API_KEY: ${OPEN_AI_API_KEY}
       OPEN_AI_ENDPOINT: ${OPEN_AI_ENDPOINT}
+      OPEN_AI_COMPLETIONS_PATH: ${OPEN_AI_COMPLETIONS_PATH}
+      CHAT_MODEL: ${CHAT_MODEL}
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       MISTRAL_AI_API_KEY: ${MISTRAL_AI_API_KEY}
+      IMAGE_MODEL: ${IMAGE_MODEL}
+      IMAGE_AI_COMPLETIONS_PATH: ${IMAGE_AI_COMPLETIONS_PATH}
     ports:
       - 8081:8081
     depends_on:

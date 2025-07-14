@@ -1,6 +1,6 @@
 package com.training.ai.embadding.web;
 
-import com.training.ai.embadding.image.ImageInsightService;
+import com.training.ai.embadding.service.ImageReaderService;
 import com.training.ai.embadding.store.VectorStoreService;
 import lombok.RequiredArgsConstructor;
 import org.jsoup.Jsoup;
@@ -20,7 +20,8 @@ import java.util.List;
 public class WebPageReaderService {
 
     private final VectorStore vectorStore;
-    private final ImageInsightService imageInsightService;
+
+    private final ImageReaderService imageReaderService;
     private final VectorStoreService vectorStoreService;
     private final HtmlTableExtractorService htmlTableExtractorService;
     private final ChatClient chatTableClient;
@@ -32,6 +33,33 @@ public class WebPageReaderService {
             //addTablesDescriptionOfWebPageContent(url);
         } catch (IOException e) {
             throw new RuntimeException("Failed to read from URL: " + url + "Caused by: " + e.getMessage(), e);
+        }
+    }
+
+    protected void addPlainWebPageContent(String url) throws IOException {
+        Document htmlDoc = Jsoup.connect(url).get();
+        // Extract readable content
+        String textContent = htmlDoc.select("article, main, body").text(); // adjust selector as needed
+        if (textContent.isBlank()) {
+            throw new RuntimeException("No readable content found at URL: " + url);
+        }
+        // Convert into Document list
+        vectorStoreService.storeToVectorStore(textContent, url);
+    }
+
+    protected List<String> extractImageUrlsFromPage(String url) throws IOException {
+        Document doc = Jsoup.connect(url).get();
+        return doc.select("img")
+                .stream()
+                .map(img -> img.absUrl("src"))
+                .filter(src -> src.endsWith(".png") || src.endsWith(".jpg"))
+                .toList();
+    }
+
+    protected void extractDiagrams(String webpageUrl) throws IOException {
+        List<String> imageUrls = extractImageUrlsFromPage(webpageUrl);
+        for (String imageUrl : imageUrls) {
+            imageReaderService.addResource(imageUrl);
         }
     }
 
@@ -57,32 +85,5 @@ public class WebPageReaderService {
         vectorStoreService.storeToVectorStore(content, url);
     }
 
-    protected void addPlainWebPageContent(String url) throws IOException {
-        Document htmlDoc = Jsoup.connect(url).get();
-        // Extract readable content
-        String textContent = htmlDoc.select("article, main, body").text(); // adjust selector as needed
-        if (textContent.isBlank()) {
-            throw new RuntimeException("No readable content found at URL: " + url);
-        }
-        // Convert into Document list
-        vectorStoreService.storeToVectorStore(textContent, url);
-    }
-
-    protected List<String> extractImageUrlsFromPage(String url) throws IOException {
-        Document doc = Jsoup.connect(url).get();
-        return doc.select("img")
-                .stream()
-                .map(img -> img.absUrl("src"))
-                .filter(src -> src.endsWith(".png") || src.endsWith(".jpg"))
-                .toList();
-    }
-
-    public void extractDiagrams(String webpageUrl) throws IOException {
-        List<String> imageUrls = extractImageUrlsFromPage(webpageUrl);
-        for (String imageUrl : imageUrls) {
-            imageInsightService.extractInsightAndStore(imageUrl);
-        }
-
-    }
 }
 

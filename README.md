@@ -99,7 +99,7 @@ for the backend and a modern **React + Vite** frontend styled similar to ChatGPT
   - PGVECTOR_URL 
   - OPEN_AI_API_KEY -> *No default value*
   - OPEN_AI_ENDPOINT -> by default https://ai-proxy.lab.epam.com
-  - OPEN_AI_COMPLETION_PATH -> /openai/deployments/gpt-4.1-mini-2025-04-14/chat/completions 
+  - OPEN_AI_COMPLETIONS_PATH -> /openai/deployments/gpt-4.1-mini-2025-04-14/chat/completions 
   - CHAT_MODEL -> by default `gpt-4.1-mini-2025-04-14`
   - MISTRAL_AI_API_KEY -> *No default value*
 - Open a terminal, navigate to the directory (`<ROOT_FOLDER>/multimodal-rag-api/docker-config`) <br/>containing docker-compose.yml file, and run the following command:

@@ -1,6 +1,8 @@
 package com.training.ai.embadding.store;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.ai.document.DocumentReader;
+import org.springframework.ai.vectorstore.SearchRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.ai.document.Document;
 import org.springframework.ai.transformer.splitter.TokenTextSplitter;
@@ -22,5 +24,18 @@ public class VectorStoreService {
 
         TokenTextSplitter splitter = new TokenTextSplitter();
         vectorStore.accept(splitter.apply(List.of(doc)));
+    }
+
+    public void storeToVectorStore(DocumentReader documentReader) {
+        TokenTextSplitter textSplitter = new TokenTextSplitter();
+        vectorStore.accept(textSplitter.apply(documentReader.get()));
+    }
+
+    public List<Document> similaritySearch(String query) {
+        SearchRequest searchRequest = SearchRequest.builder()
+                .query(query)
+                .topK(5)
+                .build();
+        return vectorStore.similaritySearch(searchRequest);
     }
 }
