@@ -102,6 +102,8 @@ for the backend and a modern **React + Vite** frontend styled similar to ChatGPT
   - OPEN_AI_COMPLETIONS_PATH -> /openai/deployments/gpt-4.1-mini-2025-04-14/chat/completions 
   - CHAT_MODEL -> by default `gpt-4.1-mini-2025-04-14`
   - MISTRAL_AI_API_KEY -> *No default value*
+  - IMAGE_MODEL -> anthropic.claude-v3-haiku
+  - IMAGE_AI_COMPLETIONS_PATH -> /openai/deployments/anthropic.claude-v3-haiku/chat/completions
 - Open a terminal, navigate to the directory (`<ROOT_FOLDER>/multimodal-rag-api/docker-config`) <br/>containing docker-compose.yml file, and run the following command:
 
 ```shell
