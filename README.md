@@ -115,6 +115,22 @@ docker-compose --env-file ./config/.env up
 **Frontend URL**: http://localhost:7000/rag-spa or http://127.0.0.1:7000/rag-spa/
 ![img.png](img.png)
 
+## TEST image recognition
+1. Upload image from http/chat-stock-performance.png
+2. Ask: chat-stock-performance.png describes?
+
+## TEST pdf document recognition
+1. Upload pdf from http/microservices-on-aws.pdf
+2. Ask: What ways can be used to deploy Lambda into AWS cloud?
+
+## TEST html recognition
+1. Upload https://www.microsoft.com/investor/reports/ar24/index.html
+2. Ask: 
+- List images from microsoft investor reports
+- List tables from microsoft investor reports
+- What was Microsoft's revenue in Q4 2024?
+
+
 ### Troubleshooting
 Error:<br/>
 ```text
