@@ -138,9 +138,9 @@ setup correct value of PGVECTOR_URL ENVIRONMENT VARIABLE in `.env` file
 #### Push docker images to https://hub.docker.com/
 Let’s build our container: <br/>
 ```shell
-$ docker build -t mnpma/rag-ui:1.0 .
+$ docker build -t mnpma/multimodal-rag-ui:1.0 .
  
-$ docker build -t mnpma/rag-api:1.0 .
+$ docker build -t mnpma/multimodal-rag-api:1.0 .
 
 ```
 Now let’s push this to Docker Hub. If you haven’t logged into the Docker Hub <br/>
@@ -152,8 +152,8 @@ Username:
 Password:
 Login Succeeded
 $
-$ docker push mnpma/rag-ui:1.0
-$ docker push mnpma/rag-api:1.0
+$ docker push mnpma/multimodal-rag-ui:1.0
+$ docker push mnpma/multimodal-rag-api:1.0
 ```
 #### Run DB (standalone for debugging)
 ```shell
