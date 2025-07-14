@@ -127,8 +127,8 @@ docker-compose --env-file ./config/.env up
 1. Upload https://www.microsoft.com/investor/reports/ar24/index.html
 2. Ask: 
 - List images from microsoft investor reports
-- List tables from microsoft investor reports
-- What was Microsoft's revenue in Q4 2024?
+- Please sum up state of affair about dividend
+- What was Microsoft's revenue in 2024?
 
 
 ### Troubleshooting
