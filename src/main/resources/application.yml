@@ -55,15 +55,6 @@ spring:
         model: "${CHAT_MODEL:gpt-4.1-mini-2025-04-14}" # gpt-4-turbo
         base-url: ${OPEN_AI_ENDPOINT:https://ai-proxy.lab.epam.com}
         embeddings-path: /openai/deployments/text-embedding-ada-002/embeddings
-    cohere:
-      api-key: ${COHERE_API_KEY}
-      base-url: ${COHERE_BASE_URL:https://api.cohere.com/v2}
-      chat:
-        model: "${COHERE_CHAT_MODEL:command-a-03-2025}"
-      embed:
-        model: "${COHERE_EMBED_MODEL:embed-v4.0}"
-        input-type: "${COHERE_EMBED_INPUT_TYPE:classification}"
-
 
 openai:
   image-model: "${IMAGE_MODEL:anthropic.claude-v3-haiku}" #gpt-4-vision-preview
