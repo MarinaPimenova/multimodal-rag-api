@@ -34,14 +34,15 @@ public class RagService {
     private Resource systemPrompt;
     private final VectorStore vectorStore;
     private final ChatMemory chatMemory;
-    private final ChatClient chatClient;
+    //private final ChatClient chatClient;
+    private ChatClient cohereChatClient;
 
     public RagService(
             VectorStore vectorStore,
-            ChatMemory chatMemory, ChatClient chatClient) {
+            ChatMemory chatMemory, ChatClient cohereChatClient) {
         this.vectorStore = vectorStore;
         this.chatMemory = chatMemory;
-        this.chatClient = chatClient;
+        this.cohereChatClient = cohereChatClient;
     }
 
     public AIGenerativeResponse generate(String sessionId, String question) {
@@ -52,7 +53,7 @@ public class RagService {
         if(NEW_SESSION_ID.equals(sessionId)) {
             sessionId = UUID.randomUUID().toString();
         }
-        String content = chatClient
+        String content = cohereChatClient
                 .prompt(p)
                 .system(systemSpec -> systemSpec.text(systemPrompt)
                         .param("question", question))

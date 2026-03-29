@@ -64,6 +64,11 @@
             <artifactId>spring-ai-rag</artifactId>
         </dependency>
 
+        <!--COHERE-->
+        <dependency>
+            <groupId>org.springframework.ai</groupId>
+            <artifactId>spring-ai-starter-model-oci-genai</artifactId>
+        </dependency>
         <!-- Manual configuration of Mistral-ai -->
         <dependency>
             <groupId>org.springframework.ai</groupId>

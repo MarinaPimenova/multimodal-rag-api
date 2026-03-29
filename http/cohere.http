@@ -1,0 +1,94 @@
+# curl --request POST
+#  --url https://api.cohere.com/v2/chat
+#  --header 'accept: application/json'
+#  --header 'content-type: application/json'
+#  --header "Authorization: bearer $CO_API_KEY"
+#  --data '{
+#    "model": "command-a-03-2025",
+#    "messages": [
+#      {
+#        "role": "user",
+#        "content": "Tell me about LLMs"
+#      }
+#    ]
+#  }'
+POST https://api.cohere.com/v2/chat
+accept: application/json
+Authorization: bearer $CO_API_KEY
+Content-Type: application/json
+
+{
+  "model": "command-a-03-2025",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Tell me about LLMs"
+    }
+  ]
+}
+
+###
+# curl --request POST
+#  --url https://api.cohere.com/v2/chat
+#  --header 'accept: application/json'
+#  --header 'content-type: application/json'
+#  --header "Authorization: bearer $CO_API_KEY"
+#  --data '{
+#    "stream": true,
+#    "model": "command-a-03-2025",
+#    "messages": [
+#      {
+#        "role": "user",
+#        "content": "Tell me about LLMs"
+#      }
+#    ]
+#  }'
+POST https://api.cohere.com/v2/chat
+accept: application/json
+Authorization: bearer $CO_API_KEY
+Content-Type: application/json
+
+{
+  "stream": true,
+  "model": "command-a-03-2025",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Tell me about LLMs"
+    }
+  ]
+}
+
+###
+# curl --request POST
+#  --url https://api.cohere.com/v2/embed
+#  --header 'accept: application/json'
+#  --header 'content-type: application/json'
+#  --header "Authorization: bearer $CO_API_KEY"
+#  --data '{
+#    "model": "embed-v4.0",
+#    "texts": ["hello", "goodbye"],
+#    "input_type": "classification",
+#    "embedding_types": ["float"]
+#  }'
+POST https://api.cohere.com/v2/embed
+accept: application/json
+Authorization: bearer $CO_API_KEY
+Content-Type: application/json
+
+{
+  "model": "embed-v4.0",
+  "texts": [
+    "hello",
+    "goodbye"
+  ],
+  "input_type": "classification",
+  "embedding_types": [
+    "float"
+  ]
+}
+
+###
+
+
+
