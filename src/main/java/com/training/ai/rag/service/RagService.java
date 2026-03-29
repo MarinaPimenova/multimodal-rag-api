@@ -25,24 +25,23 @@ public class RagService {
             You're assisting with questions.
             Use the following context and chat history to answer the QUESTION but act as if you knew this information innately.
             If unsure, simply state that you don't know.
-                        
+            
             QUESTION
             {question}
-                        
+            
             """;
     @Value("classpath:/system-prompt-template.st")
     private Resource systemPrompt;
     private final VectorStore vectorStore;
     private final ChatMemory chatMemory;
-    //private final ChatClient chatClient;
-    private ChatClient cohereChatClient;
+    private final ChatClient chatClient;
 
     public RagService(
             VectorStore vectorStore,
-            ChatMemory chatMemory, ChatClient cohereChatClient) {
+            ChatMemory chatMemory, ChatClient chatClient) {
         this.vectorStore = vectorStore;
         this.chatMemory = chatMemory;
-        this.cohereChatClient = cohereChatClient;
+        this.chatClient = chatClient;
     }
 
     public AIGenerativeResponse generate(String sessionId, String question) {
@@ -53,7 +52,7 @@ public class RagService {
         if(NEW_SESSION_ID.equals(sessionId)) {
             sessionId = UUID.randomUUID().toString();
         }
-        String content = cohereChatClient
+        String content = chatClient
                 .prompt(p)
                 .system(systemSpec -> systemSpec.text(systemPrompt)
                         .param("question", question))
